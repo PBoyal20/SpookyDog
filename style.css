@@ -1,0 +1,23 @@
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+
+ #canvas-1{
+    border: 5px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+    font-family: 'Creepster', cursive;
+ }
+
+ #player, #layer1, #layer2, #layer3, #layer4, #layer5, #bat-1, #bat-2, #bat-3,
+  #digger, #fly, #ghost-1,#ghost-2, #ghost-3, #ghost-4, #ground_zombie, #hand,
+   #plant, #raven, #big_spider, #spider, #spinner, #worm, #zombie, #boom,#fire, 
+   #heart, #lives{
+    display: none;
+ }
