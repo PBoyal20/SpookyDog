@@ -28,7 +28,7 @@ export class Sitting extends State {
     }
 
     handleInput(input){
-        if(input.includes('ArrowLeft') || (input.includes('ArrowRight'))){
+        if(input.includes('ArrowLeft') || (input.includes('SwipeLeft')) || (input.includes('ArrowRight')) || (input.includes('SwipeRight'))){
             this.game.player.setState(states.RUNNING, 1);
         } else if (input.includes('Enter')){
             this.game.player.setState(states.ROLLING, 2);
@@ -48,10 +48,10 @@ export class Running extends State {
     }
     handleInput(input){
         this.game.particles.unshift(new Dust(this.game, this.game.player.x + (this.game.player.width * 0.5), this.game.player.y + this.game.player.height));
-        if(input.includes('ArrowDown')){
+        if(input.includes('ArrowDown') || input.includes('SwipeDown')){
             this.game.player.setState(states.SITTING, 0);
         }
-        else if(input.includes('ArrowUp')){
+        else if(input.includes('ArrowUp') || input.includes('SwipeUp')){
             this.game.player.setState(states.JUMPING, 1);
         }
         else if (input.includes('Enter')){
