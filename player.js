@@ -55,10 +55,6 @@ export class Player {
             this.y = this.game.height - this.height - this.game.groundHeight;
         }
 
-        console.log(this.vy, this.onGround());
-
-
-
         //spirte animation
         if (this.frameTimer > this.frameInterval) {
             this.frameTimer = 0;
@@ -113,5 +109,14 @@ export class Player {
             }
         });
 
+    }
+
+    getBounds() {
+        return {
+            x: this.x,
+            y: this.y,
+            width: this.width,
+            height: this.height
+        }
     }
 }
