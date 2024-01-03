@@ -5,6 +5,7 @@ export class InputHandler{
         this.touchY = '';
         this.touchX = '';
         this.touchThreshold = 30;
+        this.touchTimer = 0;
         window.addEventListener('keydown', e => {
             if((e.key === 'ArrowDown' ||
                e.key === 'ArrowUp' ||
@@ -34,11 +35,19 @@ export class InputHandler{
          window.addEventListener('touchstart', e => {
                this.touchY = e.changedTouches[0].pageY;
                this.touchX = e.changedTouches[0].pageX;
+               
          });
 
          window.addEventListener('touchmove', e => {
             const swipeDistanceY = e.changedTouches[0].pageY - this.touchY;
             const swipeDistanceX = e.changedTouches[0].pageX - this.touchX;
+
+            this.touchTimer = setTimeout(() => {
+               console.log('touch and hold state');
+            }, 100);
+
+
+
 
             if(swipeDistanceY < -this.touchThreshold && this.keys.indexOf('SwipeUp') === -1){
                 this.keys.push('SwipeUp');
@@ -62,6 +71,11 @@ export class InputHandler{
             this.keys.splice(this.keys.indexOf('SwipeDown'),1);
             this.keys.splice(this.keys.indexOf('SwipeLeft'),1);
             this.keys.splice(this.keys.indexOf('SwipeRight'),1);
+
+            if (this.touchTimer){
+                clearTimeout(this.touchTimer);
+                this.touchTimer = 0;
+            }
          });
     }
 }
